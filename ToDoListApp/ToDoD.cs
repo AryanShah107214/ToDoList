@@ -24,7 +24,7 @@ namespace ToDoListApp
             }
             else
             {
-
+                Console.WriteLine("Please select one of the above");
             }
             Console.ReadKey();
         }
