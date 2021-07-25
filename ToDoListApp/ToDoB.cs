@@ -8,26 +8,42 @@ namespace ToDoListApp
     {
         public static void ToDo2()
         {
-        ToDoBStart:
             Console.Clear();
-            Console.WriteLine("What would you like to do with your chosen To Do -- B. Edit or Delete the To Do (E/D)");
+            Console.WriteLine("What would you like to do with your chosen to do - "+ Program.toDoChosen[1] +". Edit or Finish To Do (E/F)");
+        ToDoBStart:
             string toDoB = Console.ReadLine().ToUpper();
             if (toDoB == "E")
             {
+                edit:
                 Console.WriteLine("You have chosen to edit");
                 Console.WriteLine("What would you like to change it to");
                 string changesToB = Console.ReadLine();
-                List1.toDoChosen[1] = changesToB;
-                Console.WriteLine("You have succesfully changed the value of To Do B to " + changesToB);
-                ToDos.Main1();
-            }
-            else if (toDoB == "D")
-            {
-                Console.WriteLine("Please confirm that you would like to delete this to do by typing \"yes\"");
-                string deleteB = Console.ReadLine();
-                if (deleteB == "yes")
+                Program.toDoChosen[1] = changesToB;
+                if (changesToB == " ")
                 {
-                    List1.toDoChosen[1] = "";
+                    changesToB = null;//so it can be checked by bool IsEmpty
+                }
+                bool IsEmpty = string.IsNullOrEmpty(changesToB);//checks if the string is empty or null
+                if (!IsEmpty)
+                {
+                    Console.WriteLine("You have succesfully changed the value of the 2nd To Do to " + changesToB);
+                    Console.Clear();
+                    ToDos.Main1();
+                }
+                else
+                {
+
+                    goto edit;//takes user to labelled statement - edit
+                }
+            }
+            else if (toDoB == "F")
+            {
+                Console.WriteLine("Please confirm that you would like to finish this to do by typing \"yes\"");
+                string finishB = Console.ReadLine();
+                if (finishB == "yes")
+                {
+                    Program.toDoChosen[1] = "To Do B Finished";//displays To Do B Finished so user knows they have completed the to do
+                    Console.Clear();
                     ToDos.Main1();
                 }
                 else
@@ -37,9 +53,10 @@ namespace ToDoListApp
             }
             else
             {
-                while (toDoB != "E" || toDoB != "D")
+                while (toDoB != "E" || toDoB != "F")
                 {
-                    goto ToDoBStart;
+                    Console.WriteLine("Please type either 'E' or 'F' ");
+                    goto ToDoBStart;//if user didn't enter one of the accepted answers
                 }
             }
             Console.ReadKey();

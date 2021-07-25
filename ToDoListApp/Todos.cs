@@ -10,44 +10,39 @@ namespace ToDoListApp
     {
         public static void Main1()
         {
-            /*using(FileStream fs = new FileStream("login.txt", FileMode.Create, FileAccess.Write))
-            using (StreamWriter writer = new StreamWriter(fs))
+            Console.WriteLine("Please enter a value from the below list ");
+            
+            foreach (string ToDo in Program.toDoChosen)
             {
-                writer.WriteLine("Some new text");
-                writer.WriteLine("Another line of text");
-            }*/
-            Console.WriteLine("Please enter a value from 'A','B','C' or 'D' ");
-            foreach (string ToDo in List1.toDoChosen)
-            {
-                Console.WriteLine(ToDo);
+                Console.WriteLine(ToDo);//prints all items in list
             }
 
-            string toDo = Console.ReadLine().ToUpper();
-            while (!List1.toDoChosen.Contains(toDo))
+            string toDo = Console.ReadLine();
+            while (!Program.toDoChosen.Contains(toDo))//if to do entered by user is not in the list, it prompts user to try again
             {
                 Console.WriteLine("Please pick from the above list");
-                toDo = Console.ReadLine().ToUpper();
+                toDo = Console.ReadLine();
             }
-            if (List1.toDoChosen.Contains(toDo))
+            if (Program.toDoChosen.Contains(toDo))
             {
-                if (toDo == "A")
+                if(toDo==Program.toDoChosen[0])
                 {
-                    Console.WriteLine("You have chosen to do A");
-                    ToDoA.ToDo1();
+                    Console.WriteLine("You have chosen the 1st to do");
+                    ToDoA.ToDo1();//takes user to 1st to do by calling the function
                 }
-                else if (toDo == "B")
+                else if (toDo == Program.toDoChosen[1])
                 {
-                    Console.WriteLine("You have chosen to do B");
+                    Console.WriteLine("You have chosen the 2nd to do");//takes user to 2nd to do by calling the function
                     ToDoB.ToDo2();
                 }
-                else if (toDo == "C")
+                else if (toDo == Program.toDoChosen[2])
                 {
-                    Console.WriteLine("You have chosen to do C");
+                    Console.WriteLine("You have chosen the 3rd to do");//takes user to 3rd to do by calling the function
                     ToDoC.ToDo3();
                 }
-                else if (toDo == "D")
+                else if (toDo == Program.toDoChosen[3])
                 {
-                    Console.WriteLine("You have chosen to do D");
+                    Console.WriteLine("You have chosen the 4th to do");//takes user to 4th to do by calling the function
                     ToDoD.ToDo4();
                 }
             }
@@ -56,7 +51,7 @@ namespace ToDoListApp
                 Console.WriteLine("Please pick from the above list");
             }
             Console.ReadKey();
-        end: { }
+        
         }
     }
 }
