@@ -42,17 +42,38 @@ namespace ToDoListApp
             }
             else if (toDoA == "F")
             {
-                Console.WriteLine("Please confirm that you would like to finish this to do by typing \"yes\"");
+                Console.WriteLine("Please confirm that you would like to finish this to do by typing \"yes\". Else, type \"no\"");
                 string finishA = Console.ReadLine();
+                finish:
                 if (finishA == "yes")
                 {
                     Program.toDoChosen[0] = "To Do A Finished";//displays To Do A Finished so user knows they have completed the to do
                     Console.Clear();
                     ToDos.Main1();
                 }
-                else
+                else if(finishA=="no")
                 {
                     ToDos.Main1();
+                }
+                else
+                {
+                    Console.WriteLine("You typed" + finishA + "\nType any key to advance");
+                    Console.ReadKey();
+                    while(finishA!="yes"|| finishA!="no")
+                    {
+                        Console.WriteLine("Please type either \"yes\" or \"no\"");
+                        finishA=Console.ReadLine();
+                        goto finish;
+                    }
+                    if(finishA == "yes")
+                    {
+                        goto finish;
+                    }
+                    else if(finishA == "no")
+                    {
+                        ToDos.Main1();
+                    }
+                    
                 }
 
             }

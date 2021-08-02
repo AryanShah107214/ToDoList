@@ -8,7 +8,8 @@ namespace ToDoListApp
 {
     public class Program
     {
-        public static List<string> toDoChosen = new List<string>() { "1", "2", "3", "4" };//stores to dos and is outside the main function so it can be accessed by other classes
+        public static List<string> toDoChosen = new List<string>() { "ToDoA", "ToDoB", "ToDoC", "ToDoD" };
+        public static List<string> toDoNums = new List<string>() { "1", "2", "3", "4"};//stores to dos and is outside the main function so it can be accessed by other classes
         static void Main()
         {
             Console.WriteLine("Hello, welcome to my to do list app.");
@@ -16,39 +17,41 @@ namespace ToDoListApp
             Console.WriteLine("Type any key to advance");
             Console.ReadKey();
             Console.Clear();//clears console
-            
-            
+
+            int ListNum = 0;
             foreach(string ToDo in toDoChosen)
             {
-                Console.WriteLine(ToDo);//prints to do options
+                ListNum++;
+                Console.WriteLine("Below are the available lists");
+                Console.WriteLine(ListNum + ". " + ToDo);//prints to do options
             }
 
-            Console.WriteLine("Please enter a value from '1','2','3' or '4' ");
+            Console.WriteLine("Please type a list number to view a list");
+            
             string toDo = Console.ReadLine();
-            while (!toDoChosen.Contains(toDo))//if to do entered by user is not in the list, it prompts user to try again
+            while (!toDoNums.Contains(toDo))//if to do entered by user is not in the list, it prompts user to try again
             {
                 Console.WriteLine("Please pick from the above list");
                 toDo = Console.ReadLine();
             }
-            if (toDoChosen.Contains(toDo))
+            switch(int.Parse(toDo))
             {
-                Console.WriteLine("You chose to do - " + toDo);
-                if (toDo == Program.toDoChosen[0])
-                {
+                case 1:
+                    Console.WriteLine("You chose the 1st to do");
                     ToDoA.ToDo1();
-                }
-                else if (toDo == Program.toDoChosen[1])
-                {
+                    break;
+                case 2:
+                    Console.WriteLine("You chose the 2nd to do");
                     ToDoB.ToDo2();
-                }
-                else if (toDo == Program.toDoChosen[2])
-                {
+                    break;
+                case 3:
+                    Console.WriteLine("You chose the 3rd to do");
                     ToDoC.ToDo3();
-                }
-                else if (toDo == Program.toDoChosen[3])
-                {
+                    break;
+                case 4:
+                    Console.WriteLine("You chose the 4th to do");
                     ToDoD.ToDo4();
-                }
+                    break;
             }
             Console.ReadKey();
         }
