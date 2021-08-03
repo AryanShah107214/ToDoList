@@ -19,20 +19,23 @@ namespace ToDoListApp
             Console.Clear();//clears console
 
             int ListNum = 0;
-            foreach(string ToDo in toDoChosen)
+            Console.WriteLine("Below are the available lists");
+            foreach (string ToDo in toDoChosen)
             {
                 ListNum++;
-                Console.WriteLine("Below are the available lists");
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(ListNum + ". " + ToDo);//prints to do options
             }
-
+            Console.ResetColor();
             Console.WriteLine("Please type a list number to view a list");
             
             string toDo = Console.ReadLine();
             while (!toDoNums.Contains(toDo))//if to do entered by user is not in the list, it prompts user to try again
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Please pick from the above list");
                 toDo = Console.ReadLine();
+                Console.ResetColor();
             }
             switch(int.Parse(toDo))
             {

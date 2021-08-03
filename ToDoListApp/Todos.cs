@@ -12,18 +12,20 @@ namespace ToDoListApp
         {
             Console.WriteLine("Please enter a value from the below list ");
             int ListNum = 0;
+            Console.WriteLine("Below are the available lists");
             foreach (string ToDo in Program.toDoChosen)
             {
                 ListNum++;
-                Console.WriteLine("Below are the available lists");
                 Console.WriteLine(ListNum + ". " + ToDo);//prints to do options
             }
             
             string toDo = Console.ReadLine();
             while (!Program.toDoNums.Contains(toDo))//if to do entered by user is not in the list, it prompts user to try again
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Please pick from the above list");
                 toDo = Console.ReadLine();
+                Console.ResetColor();
             }
             switch (int.Parse(toDo))//used instead of if else statements and uses the int - 'toDo' to switch between cases
             {
@@ -40,8 +42,10 @@ namespace ToDoListApp
                     ToDoD.ToDo4();
                     break;
                 default:
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Please pick one of the above");
                     break;
+                    Console.ResetColor();
             }
             
             Console.ReadKey();

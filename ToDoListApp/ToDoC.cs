@@ -26,9 +26,11 @@ namespace ToDoListApp
                 bool IsEmpty = string.IsNullOrEmpty(changesToC);//checks if the string is empty or null
                 if (!IsEmpty)
                 {
-                    Console.WriteLine("You have succesfully changed the value of the 3rd To Do to " + changesToC);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("You have succesfully changed the value of the 4rd To Do to " + changesToC);
                     Console.Clear();
                     ToDos.Main1();
+                    Console.ResetColor();
                 }
                 else
                 {
