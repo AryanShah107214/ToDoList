@@ -18,12 +18,12 @@ namespace ToDoListApp
                 ListNum++;
                 Console.WriteLine(ListNum + ". " + ToDo);//prints to do options
             }
-            
+            Console.Write("\nEnter list number: ");
             string toDo = Console.ReadLine();
             while (!Program.toDoNums.Contains(toDo))//if to do entered by user is not in the list, it prompts user to try again
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Please pick from the above list");
+                Console.Write("Please pick from the above list: ");
                 toDo = Console.ReadLine();
                 Console.ResetColor();
             }

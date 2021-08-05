@@ -19,7 +19,8 @@ namespace ToDoListApp
                 
                 Console.WriteLine("You have chosen to edit");
                 Console.WriteLine("What would you like your to do to display");
-                edit:
+            edit:
+                Console.Write("Answer: ");
                 string changesToA = Console.ReadLine();
                 Program.toDoChosen[0] = changesToA;
                 if (changesToA == " ")
@@ -47,6 +48,7 @@ namespace ToDoListApp
             else if (toDoA == "F")
             {
                 Console.WriteLine("Please confirm that you would like to finish this to do by typing \"yes\". Else, type \"no\"");
+                Console.Write("Answer: ");
                 string finishA = Console.ReadLine();
                 finish:
                 if (finishA == "yes")
@@ -68,6 +70,7 @@ namespace ToDoListApp
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Please type either \"yes\" or \"no\"");
                         Console.ResetColor();
+                        Console.Write("Answer: ");
                         finishA = Console.ReadLine();
                         goto finish;
                     }

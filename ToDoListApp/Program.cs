@@ -8,7 +8,7 @@ namespace ToDoListApp
 {
     public class Program
     {
-        public static List<string> toDoChosen = new List<string>() { "ToDoA", "ToDoB", "ToDoC", "ToDoD" };
+        public static List<string> toDoChosen = new List<string>() { "To Do A", "To Do B", "To Do C", "To Do D" };
         public static List<string> toDoNums = new List<string>() { "1", "2", "3", "4"};//stores to dos and is outside the main function so it can be accessed by other classes
         static void Main()
         {
@@ -27,13 +27,13 @@ namespace ToDoListApp
                 Console.WriteLine(ListNum + ". " + ToDo);//prints to do options
             }
             Console.ResetColor();
-            Console.WriteLine("Please type a list number to view a list");
-            
+            Console.WriteLine("Please type a list number to view a list\n");
+            Console.Write("Enter list number: ");
             string toDo = Console.ReadLine();
             while (!toDoNums.Contains(toDo))//if to do entered by user is not in the list, it prompts user to try again
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Please pick from the above list");
+                Console.Write("Please pick from the above list: ");
                 toDo = Console.ReadLine();
                 Console.ResetColor();
             }
