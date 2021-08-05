@@ -44,8 +44,8 @@ namespace ToDoListApp
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Please pick one of the above");
-                    break;
                     Console.ResetColor();
+                    break;
             }
             
             Console.ReadKey();

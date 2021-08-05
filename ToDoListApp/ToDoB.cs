@@ -9,14 +9,15 @@ namespace ToDoListApp
         public static void ToDo2()
         {
             Console.Clear();
-            Console.WriteLine("What would you like to do with your chosen to do - "+ Program.toDoChosen[1] +". Edit or Finish To Do (E/F)");
+            Console.WriteLine("What would you like to do with your chosen to do --" + Program.toDoChosen[1] + ". Edit or Finish To Do (E/F)?");
         ToDoBStart:
             string toDoB = Console.ReadLine().ToUpper();
             if (toDoB == "E")
             {
-            edit:
+
                 Console.WriteLine("You have chosen to edit");
-                Console.WriteLine("What would you like to change it to");
+                Console.WriteLine("What would you like your to do to display");
+            edit:
                 string changesToB = Console.ReadLine();
                 Program.toDoChosen[1] = changesToB;
                 if (changesToB == " ")
@@ -27,16 +28,19 @@ namespace ToDoListApp
                 if (!IsEmpty)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("You have succesfully changed the value of the 2nd To Do to " + changesToB);
+                    Console.Write("You have succesfully changed the value of the 2nd To Do to " + changesToB);
+                    Console.ResetColor();
+                    Console.Write("\nType any key to advance");
+                    Console.ReadKey();
                     Console.Clear();
                     ToDos.Main1();
-                    Console.ResetColor();
                 }
                 else
                 {
 
                     goto edit;//takes user to labelled statement - edit
                 }
+
             }
             else if (toDoB == "F")
             {
@@ -45,7 +49,7 @@ namespace ToDoListApp
             finish:
                 if (finishB == "yes")
                 {
-                    Program.toDoChosen[1] = "To Do B Finished";//displays To Do A Finished so user knows they have completed the to do
+                    Program.toDoChosen[1] = "To Do B Finished";//displays To Do B Finished so user knows they have completed the to do
                     Console.Clear();
                     ToDos.Main1();
                 }
@@ -55,11 +59,13 @@ namespace ToDoListApp
                 }
                 else
                 {
-                    Console.WriteLine("You typed" + finishB + "\nType any key to advance");
+                    Console.WriteLine("You typed " + finishB + "\nType any key to advance");
                     Console.ReadKey();
                     while (finishB != "yes" || finishB != "no")
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Please type either \"yes\" or \"no\"");
+                        Console.ResetColor();
                         finishB = Console.ReadLine();
                         goto finish;
                     }
@@ -71,29 +77,17 @@ namespace ToDoListApp
                     {
                         ToDos.Main1();
                     }
-                    //Console.WriteLine("Please confirm that you would like to finish this to do by typing \"yes\"");
-                    //string finishB = Console.ReadLine();
-                    //if (finishB == "yes")
-                    //{
-                    //    Program.toDoChosen[1] = "To Do B Finished";//displays To Do B Finished so user knows they have completed the to do
-                    //    Console.Clear();
-                    //    ToDos.Main1();
-                    //}
-                    //else if(finishB=="no")
-                    //{
-                    //    ToDos.Main1();
-                    //}
-                    //else
-                    //{
-                    //    ToDos.Main1();
-                    //}
+
                 }
+
             }
             else
             {
                 while (toDoB != "E" || toDoB != "F")
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Please type either 'E' or 'F' ");
+                    Console.ResetColor();
                     goto ToDoBStart;//if user didn't enter one of the accepted answers
                 }
             }

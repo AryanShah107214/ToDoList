@@ -30,10 +30,12 @@ namespace ToDoListApp
                 if (!IsEmpty)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("You have succesfully changed the value of the 1st To Do to " + changesToA);
+                    Console.Write("You have succesfully changed the value of the 1st To Do to " + changesToA);
+                    Console.ResetColor();
+                    Console.Write("\nType any key to advance");
+                    Console.ReadKey();
                     Console.Clear();
                     ToDos.Main1();
-                    Console.ResetColor();
                 }
                 else
                 {
@@ -59,12 +61,14 @@ namespace ToDoListApp
                 }
                 else
                 {
-                    Console.WriteLine("You typed" + finishA + "\nType any key to advance");
+                    Console.WriteLine("You typed " + finishA + "\nType any key to advance");
                     Console.ReadKey();
                     while(finishA!="yes"|| finishA!="no")
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Please type either \"yes\" or \"no\"");
-                        finishA=Console.ReadLine();
+                        Console.ResetColor();
+                        finishA = Console.ReadLine();
                         goto finish;
                     }
                     if(finishA == "yes")
@@ -83,7 +87,9 @@ namespace ToDoListApp
             {
                 while (toDoA != "E" || toDoA != "F")
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Please type either 'E' or 'F' ");
+                    Console.ResetColor();
                     goto ToDoAStart;//if user didn't enter one of the accepted answers
                 }
             }
