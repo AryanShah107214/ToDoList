@@ -18,6 +18,7 @@ namespace ToDoListApp
                 Console.WriteLine("You have chosen to edit");
                 Console.WriteLine("What would you like your to do to display");
             edit:
+                Console.Write("Answer: ");
                 string changesToB = Console.ReadLine();
                 Program.toDoChosen[1] = changesToB;
                 if (changesToB == " ")
@@ -45,27 +46,32 @@ namespace ToDoListApp
             else if (toDoB == "F")
             {
                 Console.WriteLine("Please confirm that you would like to finish this to do by typing \"yes\". Else, type \"no\"");
+                Console.Write("Answer: ");
                 string finishB = Console.ReadLine();
             finish:
                 if (finishB == "yes")
                 {
-                    Program.toDoChosen[1] = "To Do B Finished";//displays To Do B Finished so user knows they have completed the to do
+                    Program.toDoChosen[1] = "To Do B Finished";//displays To Do A Finished so user knows they have completed the to do
                     Console.Clear();
                     ToDos.Main1();
                 }
                 else if (finishB == "no")
                 {
+                    Console.Clear();
                     ToDos.Main1();
                 }
                 else
                 {
-                    Console.WriteLine("You typed " + finishB + "\nType any key to advance");
-                    Console.ReadKey();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You typed " + finishB + " .");
+                    Console.ResetColor();
+                    Console.WriteLine("Type any key to advance");
                     while (finishB != "yes" || finishB != "no")
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Please type either \"yes\" or \"no\"");
                         Console.ResetColor();
+                        Console.Write("Answer: ");
                         finishB = Console.ReadLine();
                         goto finish;
                     }

@@ -34,8 +34,8 @@ namespace ToDoListApp
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("Please pick from the above list: ");
-                toDo = Console.ReadLine();
                 Console.ResetColor();
+                toDo = Console.ReadLine();
             }
             switch(int.Parse(toDo))
             {

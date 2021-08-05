@@ -6,10 +6,8 @@ namespace ToDoListApp
 {
     public class ToDoA : ToDos
     {
-
         public static void ToDo1()
         {
-        
             Console.Clear();
             Console.WriteLine("What would you like to do with your chosen to do --"+ Program.toDoChosen[0] +". Edit or Finish To Do (E/F)?");
         ToDoAStart:
@@ -59,11 +57,15 @@ namespace ToDoListApp
                 }
                 else if(finishA=="no")
                 {
+                    Console.Clear();
                     ToDos.Main1();
                 }
                 else
                 {
-                    Console.WriteLine("You typed " + finishA + "\nType any key to advance");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You typed " + finishA + " .");
+                    Console.ResetColor();
+                    Console.WriteLine("Type any key to advance");
                     Console.ReadKey();
                     while(finishA!="yes"|| finishA!="no")
                     {

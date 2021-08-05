@@ -18,6 +18,7 @@ namespace ToDoListApp
                 Console.WriteLine("You have chosen to edit");
                 Console.WriteLine("What would you like your to do to display");
             edit:
+                Console.Write("Answer: ");
                 string changesToC = Console.ReadLine();
                 Program.toDoChosen[2] = changesToC;
                 if (changesToC == " ")
@@ -45,11 +46,12 @@ namespace ToDoListApp
             else if (toDoC == "F")
             {
                 Console.WriteLine("Please confirm that you would like to finish this to do by typing \"yes\". Else, type \"no\"");
+                Console.Write("Answer: ");
                 string finishC = Console.ReadLine();
             finish:
                 if (finishC == "yes")
                 {
-                    Program.toDoChosen[2] = "To Do B Finished";//displays To Do B Finished so user knows they have completed the to do
+                    Program.toDoChosen[2] = "To Do C Finished";//displays To Do A Finished so user knows they have completed the to do
                     Console.Clear();
                     ToDos.Main1();
                 }
@@ -59,14 +61,17 @@ namespace ToDoListApp
                 }
                 else
                 {
-                    Console.WriteLine("You typed " + finishC + "\nType any key to advance");
-                    Console.ReadKey();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You typed " + finishC + " .");
+                    Console.ResetColor();
+                    Console.WriteLine("Type any key to advance");
                     while (finishC != "yes" || finishC != "no")
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Please type either \"yes\" or \"no\"");
-                        finishC = Console.ReadLine();
                         Console.ResetColor();
+                        Console.Write("Answer: ");
+                        finishC = Console.ReadLine();
                         goto finish;
                     }
                     if (finishC == "yes")
@@ -75,6 +80,7 @@ namespace ToDoListApp
                     }
                     else if (finishC == "no")
                     {
+                        Console.Clear();
                         ToDos.Main1();
                     }
 
